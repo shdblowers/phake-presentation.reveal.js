@@ -12,8 +12,8 @@
             <section>
                 <h1>Phake it 'til you make it</h1>
                 <p>
-                    A Presentation On The Phake Mocking Framework And Why You
-                    Should Use It
+                    A Presentation On The Phake Mocking Framework And How It
+                    Compares To PHPUnit Mock Objects
                 </p>
                 <br/>
                 <h3>By Steven Blowers</h3>
@@ -48,6 +48,14 @@
                         <p>Use it to confirm code behaves as expected after changes made.</p>
                     </aside>
                 </section>
+                <section>
+                    <h3>Test Doubles</h3>
+                </section>
+                <section data-background="class_disaster/1.png"></section>
+                <section data-background="class_disaster/2.png"></section>
+                <section data-background="class_disaster/3.png"></section>
+                <section data-background="class_disaster/4.png"></section>
+                <section data-background="class_disaster/5.png"></section>
             </section>
             <section>
                 <h2>Creating Mocks</h2>
@@ -205,6 +213,7 @@ $lakeMock->method('fish')
                 </code></pre>
                 <aside class="notes">
                     <p>Phake: chain together thenReturns</p>
+                    <p>PHPUnit will return null after 3rd time.</p>
                 </aside>
             </section>
             <section>
@@ -225,6 +234,22 @@ $lakeMock = Phake::mock(Lake::class, Phake::ifUnstubbed()->thenReturn(42));
                 <aside class="notes">
                     <p>What is method verification?</p>
                 </aside>
+            </section>
+            <section>
+                <pre><code class="php">
+class Lake
+{
+    public function fish(string $bait, string $timeOfDay = 'morning')
+    {
+        ...
+    }
+
+    public function chumTheWaters()
+    {
+        ...
+    }
+}
+                </code></pre>
             </section>
             <section>
                 <h3>Basic Verification</h3>
